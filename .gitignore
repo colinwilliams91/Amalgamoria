@@ -1,3 +1,7 @@
+#Amalgamoria Stuff
+.venv
+
+
 # Logs
 logs
 *.log
