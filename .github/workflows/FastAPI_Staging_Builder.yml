@@ -1,0 +1,49 @@
+#--------------------------------------------------------------------------
+# Base Staging Instance GitHub Actions Workflow Template for FastAPI0.112.2
+#--------------------------------------------------------------------------
+name: FastAPI0.112.2_Staging_Builder
+run-name: ${{ github.actor }} has started a staging build
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+  workflow_dispatch:
+
+jobs:
+  Staging_Build:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+        working-directory: ${{ github.workspace }}
+
+
+      - name: Compress Directory
+        run: |
+          tar --exclude='./.git' --exclude='./.github' -czf fastapi_repo.tar.gz .
+        working-directory: ${{ github.workspace }}
+
+      - name: Send Artifact to Infrastructure Controller
+        run: |
+             mkdir -p ~/.ssh
+             echo "${{ secrets.INFRASTRUCTURE_CONTROLLER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+             chmod 600 ~/.ssh/id_rsa
+             scp -o StrictHostKeyChecking=no -r fastapi_repo.tar.gz \
+             ${{ secrets.INFRASTRUCTURE_CONTROLLER_USER }}@\
+             ${{ secrets.INFRASTRUCTURE_CONTROLLER_IP }}\
+             :~/projects/${{ secrets.PROJECT_ARTIFACT_DESTINATION }}
