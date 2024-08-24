@@ -18,14 +18,14 @@ It's Wordle except you're trying not to die
 - please use [Gitmoji Specification](https://gitmoji.dev/) for commit conventions
 - 6 most popular:
 
-| purpose | emoji | shortcode | unicode |
-| ------- | ----- | --------- | ------- |
-| feat    | ✨ | :sparkles: | U+2728 |
-| fix     | 🐛 | :bug: | U+1F41B |
-| refactor | ♻ | :recycle: |  U+267B-FE0F |
-| chore | 💻 | :computer: | U+1F4BB |
-| test | 🧪 | :test_tube: | U+1F9EA |
-| docs | 📝 | :memo: | U+1F4DD |
+| purpose | name | emoji | shortcode | unicode |
+| ------- | ---- | ----- | --------- | ------- |
+| feat    | sparkels | ✨ | :sparkles: | U+2728 |
+| fix     | bug | 🐛 | :bug: | U+1F41B |
+| refactor | recycle | ♻ | :recycle: |  U+267B-FE0F |
+| chore | computer | 💻 | :computer: | U+1F4BB |
+| test | test_tube | 🧪 | :test_tube: | U+1F9EA |
+| docs | memo | 📝 | :memo: | U+1F4DD |
 
 ```
 # emoji-data master json
