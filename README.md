@@ -27,6 +27,9 @@ Use Python 3.12
 ### Update Dependencies List
 `pip freeze > requirements.txt`
 
+### Env Variables
+Get an API key from https://ai.google.dev/aistudio
+
 ### Workflow
 - clone this repo
 - create or pick up a ticket [from Amalgamoria Task Board](https://github.com/users/colinwilliams91/projects/11)
