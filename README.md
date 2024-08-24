@@ -1,2 +1,2 @@
-# scius
-A multiplayer-browser-horror game where players are anonymized and left to uncover secrets; each action will affect a different outcome.
+# Amalgamoria
+It's Wordle except you're trying not to die
