@@ -19,13 +19,20 @@ body:
       required: true
 
   - type: textarea
+    id: solution
+    attributes:
+      label: 'Describe the Proposed Solution'
+      description: <h4>Try to provide an EXAMPLE or CONCEPT of a design pattern that will lead to a SOLUTION</h4>
+      placeholder: Implementing x, y, & z will...
+    validations:
+      required: true
+
+  - type: textarea
     id: references
     attributes:
       label: 'References'
       description: <h4>Please provide any **SCREENSHOTS**, **CODE SNIPPETS** or **LINKS** to the codebase or documentation which will help implement a solution.</h4>
 
-  - type: textarea
-    id: solution
     attributes:
       label: 'Describe the Proposed Solution'
       description: <h4>Try to provide an EXAMPLE or CONCEPT of a design pattern that will lead to a SOLUTION</h4>
