@@ -18,7 +18,7 @@ It's Wordle except you're trying not to die
 - please use [Gitmoji Specification](https://gitmoji.dev/) for commit conventions
 - 6 most popular:
 
-| purpose | name | emoji | shortcode | unicode |
+| purpose | emoji | shortcode | unicode |
 | ------- | ----- | --------- | ------- |
 | feat    | ✨ | `:sparkles:` | U+2728 |
 | fix     | 🐛 | `:bug:` | U+1F41B |
