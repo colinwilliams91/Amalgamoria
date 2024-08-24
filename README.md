@@ -31,12 +31,12 @@ It's Wordle except you're trying not to die
 
 | purpose | emoji | shortcode | unicode |
 | ------- | ----- | --------- | ------- |
-| feat    | ✨ | :sparkles: | U+2728 |
-| fix     | 🐛 | :bug: | U+1F41B |
-| refactor | ♻ | :recycle: |  U+267B-FE0F |
-| chore | 💻 | :computer: | U+1F4BB |
-| test | 🧪 | :test_tube: | U+1F9EA |
-| docs | 📝 | :memo: | U+1F4DD |
+| feat    | ✨ | `:sparkles:` | U+2728 |
+| fix     | 🐛 | `:bug:` | U+1F41B |
+| refactor | ♻ | `:recycle:` |  U+267B-FE0F |
+| chore | 💻 | `:computer:` | U+1F4BB |
+| test | 🧪 | `:test_tube:` | U+1F9EA |
+| docs | 📝 | `:memo:` | U+1F4DD |
 
 ```
 # emoji-data master json
