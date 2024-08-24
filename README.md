@@ -7,8 +7,8 @@ It's Wordle except you're trying not to die
   - `py -3 -m venv .venv`
 - Activate your Environment
   - `.venv\Scripts\activate`
-- Run the Flask app
-  - `python -m flask --app Amalgamoria/main run`
+- Run the app
+  - `fastapi dev Amalgamoria\main.py`
 
 ### Installing Dependencies
 - Ensure you're in the Virtual Environment with `.venv\Scripts\activate`
