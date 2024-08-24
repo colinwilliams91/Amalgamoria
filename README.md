@@ -2,9 +2,20 @@
 It's Wordle except you're trying not to die
 
 ## Develop
+- Use Python 3.12
+- Create your Virtual Environment in the root directory of the project
+  - `py -3 -m venv .venv`
+- Activate your Environment
+  - `.venv\Scripts\activate`
+- Run the app
+  - `fastapi dev Amalgamoria\main.py`
 
 ### Installing Dependencies
-- _tbd pip_
+- Ensure you're in the Virtual Environment with `.venv\Scripts\activate`
+- `pip install -r requirements.txt`
+
+### Update Dependencies List
+`pip freeze > requirements.txt`
 
 ### Workflow
 - clone this repo
@@ -18,14 +29,14 @@ It's Wordle except you're trying not to die
 - please use [Gitmoji Specification](https://gitmoji.dev/) for commit conventions
 - 6 most popular:
 
-| purpose | name | emoji | shortcode | unicode |
-| ------- | ---- | ----- | --------- | ------- |
-| feat    | sparkles | ✨ | :sparkles: | U+2728 |
-| fix     | bug | 🐛 | :bug: | U+1F41B |
-| refactor | recycle | ♻ | :recycle: |  U+267B-FE0F |
-| chore | computer | 💻 | :computer: | U+1F4BB |
-| test | test_tube | 🧪 | :test_tube: | U+1F9EA |
-| docs | memo | 📝 | :memo: | U+1F4DD |
+| purpose | emoji | shortcode | unicode |
+| ------- | ----- | --------- | ------- |
+| feat    | ✨ | `:sparkles:` | U+2728 |
+| fix     | 🐛 | `:bug:` | U+1F41B |
+| refactor | ♻ | `:recycle:` |  U+267B-FE0F |
+| chore | 💻 | `:computer:` | U+1F4BB |
+| test | 🧪 | `:test_tube:` | U+1F9EA |
+| docs | 📝 | `:memo:` | U+1F4DD |
 
 ```
 # emoji-data master json

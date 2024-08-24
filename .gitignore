@@ -1,6 +1,8 @@
-#Amalgamoria Stuff
+# Python Virtual Environment
 .venv
 
+#Flask
+__pycache__
 
 # Logs
 logs
