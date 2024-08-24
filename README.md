@@ -2,9 +2,20 @@
 It's Wordle except you're trying not to die
 
 ## Develop
+- Use Python 3.12
+- Create your Virtual Environment in the root directory of the project
+  - `py -3 -m venv .venv`
+- Activate your Environment
+  - `.venv\Scripts\activate`
+- Run the Flask app
+  - `python -m flask --app Amalgamoria/main run`
 
 ### Installing Dependencies
-- _tbd pip_
+- Ensure you're in the Virtual Environment with `.venv\Scripts\activate`
+- `pip install -r requirements.txt`
+
+### Update Dependencies List
+`pip freeze > requirements.txt`
 
 ### Workflow
 - clone this repo
