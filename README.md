@@ -20,7 +20,7 @@ It's Wordle except you're trying not to die
 
 | purpose | name | emoji | shortcode | unicode |
 | ------- | ---- | ----- | --------- | ------- |
-| feat    | sparkels | ✨ | :sparkles: | U+2728 |
+| feat    | sparkles | ✨ | :sparkles: | U+2728 |
 | fix     | bug | 🐛 | :bug: | U+1F41B |
 | refactor | recycle | ♻ | :recycle: |  U+267B-FE0F |
 | chore | computer | 💻 | :computer: | U+1F4BB |
