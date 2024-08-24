@@ -12,8 +12,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 app = FastAPI()
 templates = Jinja2Templates(directory="Views")
 
-# Include the router for /gemini routes
-app.include_router(gemini_router, prefix="/gemini")
+# Include the router for /api/gemini routes
+app.include_router(gemini_router, prefix="/api")
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
