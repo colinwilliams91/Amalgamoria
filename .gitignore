@@ -1,6 +1,10 @@
-# Python Virtual Environment
-.venv
+# Redis
+dump.rdb
 
+# Python Virtual Environment
+.env
+.venv
+requirements.txt
 #Flask
 __pycache__
 
