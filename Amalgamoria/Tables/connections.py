@@ -18,7 +18,7 @@ connections = [
     ["bite the bullet", "bite your tongue", "bite off more than you can chew", "once bitten twice shy"],
     ["cold shoulder", "in cold blood", "cold as ice", "out cold"],
     ["break the ice", "ice in your veins", "walk on thin ice", "on ice"],
-    ["on the same page", "turn the page", "page-turner", "a blank page"],
+    ["on the same page", "turn the page", "a page boy", "a blank page"],
     ["in a nutshell", "crack the nut", "hard nut to crack", "tough nut to crack"],
     ["roll the dice", "the dice are cast", "no dice", "loaded dice"],
     ["come clean", "clean as a whistle", "a clean slate", "a clean break"],
