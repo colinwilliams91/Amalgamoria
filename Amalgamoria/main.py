@@ -37,3 +37,7 @@ async def index(request: Request):
     with open("Views/index.html") as f:
          # Read the content of the file and return it as an HTML response
         return HTMLResponse(content=f.read())
+
+@app.post("/test")
+def test():
+    return

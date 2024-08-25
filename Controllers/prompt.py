@@ -1,5 +1,8 @@
 import random
 from Tables.connections import connections
+from Tables.modifiers import scene_modifiers
+
+state_team_status_stand_in = 2
 
 class Prompt:
     """
@@ -14,9 +17,17 @@ class Prompt:
         prompt = f"Make four short surrealist scenes. Make each scene include one of the following phrases: {connections}. \
         Make sure that there is no commonality between all four scenes EXCEPT the one common word that exists in each of the phrases."
         return prompt
+    
+    def _find(self, iterable, condition):
+        for i in len(iterable):
+            if condition(iterable[i]):
+                return (iterable[i], i)
+        return None
 
     def _get_connections(self):
         connection = connections[random.randint(0, len(connections))]
-        print (connection)
         return connection
-        
+    
+    def _get_scene_modifiers(self):
+        modifier = self._find(scene_modifiers, lambda x: x["weight"] == state_team_status_stand_in)
+        print(modifier)
