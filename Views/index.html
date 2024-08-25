@@ -66,18 +66,27 @@
             width: 80%;
             margin: 0 auto;
         }
+        #messages {
+            list-style: none;
+            padding: 0;
+        }
+        #messages li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
     <h1>Chat with Gemini uwu</h1>
-    <form hx-post="/api/gemini">
+    <form id="gemini-form" hx-post="/api/gemini" hx-target="#response" hx-swap="innerHTML" hx-trigger="submit">
         <label for="user_input">Type your magic words here:</label><br>
         <input type="text" id="user_input" name="user_input"><br>
         <button type="submit">Unleash!</button>
     </form>
-    {% if response_data %}
-        <p>{{ response_data }}</p>
-    {% endif %}
+    <div id="response">
+        <!-- Response content will be dynamically loaded here -->
+    </div>
+
     <h1>WebSocket Chat</h1>
     <h2>Your ID: <span id="ws-id"></span></h2>
     <form action="" onsubmit="sendMessage(event)">
@@ -86,22 +95,23 @@
     </form>
     <ul id='messages'>
     </ul>
+
     <script>
-        var client_id = Date.now()
+        var client_id = Date.now();
         document.querySelector("#ws-id").textContent = client_id;
         var ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
         ws.onmessage = function(event) {
-            var messages = document.getElementById('messages')
-            var message = document.createElement('li')
-            var content = document.createTextNode(event.data)
-            message.appendChild(content)
-            messages.appendChild(message)
+            var messages = document.getElementById('messages');
+            var message = document.createElement('li');
+            var content = document.createTextNode(event.data);
+            message.appendChild(content);
+            messages.appendChild(message);
         };
         function sendMessage(event) {
-            var input = document.getElementById("messageText")
-            ws.send(input.value)
-            input.value = ''
-            event.preventDefault()
+            var input = document.getElementById("messageText");
+            ws.send(input.value);
+            input.value = '';
+            event.preventDefault();
         }
     </script>
 </body>
