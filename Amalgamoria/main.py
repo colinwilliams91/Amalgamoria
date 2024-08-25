@@ -20,3 +20,6 @@ app.include_router(websocket_router)  # Include the WebSocket router
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+# Render Partials
+# def load_partial

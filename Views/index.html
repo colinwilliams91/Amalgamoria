@@ -78,7 +78,8 @@
     {% if response_data %}
         <p>{{ response_data }}</p>
     {% endif %}
-    <h1>WebSocket Chat</h1>
+    <div hx-get=""></div>
+    <!-- <h1>WebSocket Chat</h1>
     <h2>Your ID: <span id="ws-id"></span></h2>
     <form action="" onsubmit="sendMessage(event)">
         <input type="text" id="messageText" autocomplete="off"/>
@@ -103,6 +104,6 @@
             input.value = ''
             event.preventDefault()
         }
-    </script>
+    </script> -->
 </body>
 </html>
