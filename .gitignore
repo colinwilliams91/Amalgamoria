@@ -1,3 +1,6 @@
+# Redis
+dump.rdb
+
 # Python Virtual Environment
 .venv
 
