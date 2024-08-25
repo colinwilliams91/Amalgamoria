@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot Extravaganza</title>
+    <!-- TODO: uncomment for production -->
+    <!-- <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script> -->
+    <!-- uncomment for development -->
+    <script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js" integrity="sha384-yZq+5izaUBKcRgFbxgkRYwpHhHHCpp5nseXp0MEQ1A4MTWVMnqkmcuFez8x5qfxr" crossorigin="anonymous"></script>
+    <title>Amalgamoria</title>
     <style>
         body {
             display: flex;
@@ -66,7 +70,7 @@
 </head>
 <body>
     <h1>Chat with Gemini uwu</h1>
-    <form action="/api/gemini" method="post">
+    <form hx-post="/api/gemini">
         <label for="user_input">Type your magic words here:</label><br>
         <input type="text" id="user_input" name="user_input"><br>
         <button type="submit">Unleash!</button>
