@@ -4,7 +4,7 @@ import redis
 
 from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from Controllers.gemini import router as gemini_router
 from Controllers.websockets_routes import router as websocket_router
 
@@ -41,9 +41,9 @@ async def index(request: Request):
 # Local data store TODO: replace with Redis
 usernames = []
 
-@app.post("/username", response_class=HTMLResponse)
-async def submit_username(username: str = Form(...)):
+@app.post("/username")
+async def submit_username(username: str = Form(...), user_id: int = Form(...)):
+    obj = { user_id: user_id, username: username }
     # Store the submitted username
-    usernames.append(username)
-
-    return f"<p>Username '{username} has been submitted succesfully!</p>"
+    usernames.append(obj)
+    return (f"<p>Hello {username}...</p>")
