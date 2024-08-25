@@ -87,6 +87,15 @@
         <!-- Response content will be dynamically loaded here -->
     </div>
 
+    <form hx-post="/username" hx-swap="outerHTML" hx-target="#username-response">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="username-response">
+        <!-- Username response success will Post -->
+    </div>
+
     <h1>WebSocket Chat</h1>
     <h2>Your ID: <span id="ws-id"></span></h2>
     <form action="" onsubmit="sendMessage(event)">

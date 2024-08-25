@@ -2,7 +2,7 @@ import sys
 import os
 import redis
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from Controllers.gemini import router as gemini_router
@@ -37,3 +37,13 @@ async def index(request: Request):
     with open("Views/index.html") as f:
          # Read the content of the file and return it as an HTML response
         return HTMLResponse(content=f.read())
+
+# Local data store TODO: replace with Redis
+usernames = []
+
+@app.post("/username", response_class=HTMLResponse)
+async def submit_username(username: str = Form(...)):
+    # Store the submitted username
+    usernames.append(username)
+
+    return f"<p>Username '{username} has been submitted succesfully!</p>"
