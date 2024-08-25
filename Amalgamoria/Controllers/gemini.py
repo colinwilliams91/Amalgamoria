@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-from Controllers.prompt import Prompt
+from Amalgamoria.Controllers.prompt import Prompt
 
 load_dotenv()
 

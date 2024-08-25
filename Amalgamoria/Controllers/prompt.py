@@ -1,5 +1,5 @@
 import random
-from Tables.connections import connections
+from Amalgamoria.Tables.connections import connections
 
 class Prompt:
     """
