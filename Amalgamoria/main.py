@@ -2,13 +2,14 @@ import sys
 import os
 import redis
 
+
 from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
-from Controllers.gemini import router as gemini_router
-from Controllers.websockets_routes import router as websocket_router
+from Amalgamoria.Controllers.gemini import router as gemini_router
+from Amalgamoria.Controllers.websockets_routes import router as websocket_router
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = FastAPI()
 
@@ -25,7 +26,7 @@ except redis.ConnectionError:
     print("Could not connect to Redis. Check your connection settings.")
 
 # Serve static file from the 'Views' directory
-app.mount("/static", StaticFiles(directory="Views"), name="static")
+app.mount("/static", StaticFiles(directory="Amalgamoria/Views"), name="static")
 
 # Include the routers
 app.include_router(gemini_router, prefix="/api")
