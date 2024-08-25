@@ -1,5 +1,7 @@
 import sys
 import os
+import redis
+
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
@@ -9,6 +11,18 @@ from Controllers.websockets_routes import router as websocket_router
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = FastAPI()
+
+redis_client = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
+
+# Check Redis connection
+try:
+    response = redis_client.ping()
+    if response:
+        print("Redis is connected and responding.")
+    else:
+        print("Redis is not responding.")
+except redis.ConnectionError:
+    print("Could not connect to Redis. Check your connection settings.")
 
 # Serve static file from the 'Views' directory
 app.mount("/static", StaticFiles(directory="Views"), name="static")
