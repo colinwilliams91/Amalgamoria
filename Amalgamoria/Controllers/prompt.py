@@ -1,6 +1,6 @@
 import random
-from Tables.connections import connections
-from Tables.modifiers import scene_modifiers
+from Amalgamoria.Tables.connections import connections
+from Amalgamoria.Tables.modifiers import scene_modifiers
 
 state_team_status_stand_in = 2
 
