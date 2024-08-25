@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot Extravaganza</title>
+    <!-- TODO: uncomment for production -->
+    <!-- <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script> -->
+    <!-- uncomment for development -->
+    <script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js" integrity="sha384-yZq+5izaUBKcRgFbxgkRYwpHhHHCpp5nseXp0MEQ1A4MTWVMnqkmcuFez8x5qfxr" crossorigin="anonymous"></script>
+    <title>Amalgamoria</title>
     <style>
         body {
             display: flex;
@@ -66,7 +70,7 @@
 </head>
 <body>
     <h1>Chat with Gemini uwu</h1>
-    <form action="/api/gemini" method="post">
+    <form hx-post="/api/gemini">
         <label for="user_input">Type your magic words here:</label><br>
         <input type="text" id="user_input" name="user_input"><br>
         <button type="submit">Unleash!</button>
@@ -74,5 +78,31 @@
     {% if response_data %}
         <p>{{ response_data }}</p>
     {% endif %}
+    <h1>WebSocket Chat</h1>
+    <h2>Your ID: <span id="ws-id"></span></h2>
+    <form action="" onsubmit="sendMessage(event)">
+        <input type="text" id="messageText" autocomplete="off"/>
+        <button>Send</button>
+    </form>
+    <ul id='messages'>
+    </ul>
+    <script>
+        var client_id = Date.now()
+        document.querySelector("#ws-id").textContent = client_id;
+        var ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
+        ws.onmessage = function(event) {
+            var messages = document.getElementById('messages')
+            var message = document.createElement('li')
+            var content = document.createTextNode(event.data)
+            message.appendChild(content)
+            messages.appendChild(message)
+        };
+        function sendMessage(event) {
+            var input = document.getElementById("messageText")
+            ws.send(input.value)
+            input.value = ''
+            event.preventDefault()
+        }
+    </script>
 </body>
 </html>
