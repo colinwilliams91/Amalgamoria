@@ -18,15 +18,15 @@ scene_modifiers = [
     {
         "name": "happy 3",
         "description": "Make the scenes full of adventure and grandiose joy",
-        "weight": -3,
+        "weight": 3,
     }, {
         "name": "happy 2",
         "description": "Make the scenes happy and fun",
-        "weight": -3,
+        "weight": 2,
     }, {
         "name": "happy 1",
         "description": "Make the scenes slightly airy and dramatic but carefree and adventurous",
-        "weight": -3,
+        "weight": 1,
     }, {
         "name": "neutral",
         "description": "",
