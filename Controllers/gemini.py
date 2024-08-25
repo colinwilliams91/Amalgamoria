@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Request, Form
-from fastapi.templating import Jinja2Templates
+from fastapi import APIRouter, Form
+from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -11,13 +11,11 @@ genai.configure(api_key=gemini_api)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 router = APIRouter()
-templates = Jinja2Templates(directory="Views")
 
-@router.get("/gemini")
-async def get_gemini(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
+# Takes form data (user_input) as input.
+# The Form(...) part indicates that user_input is expected to come from a form submission and is required.
 @router.post("/gemini")
-async def post_gemini(request: Request, user_input: str = Form(...)):
+async def post_gemini(user_input: str = Form(...)):
     response_data = model.generate_content(user_input)
-    return templates.TemplateResponse("index.html", {"request": request, "response_data": response_data.text})
+    # Return the generated content as a JSON response
+    return JSONResponse(content={"response": response_data.text})
