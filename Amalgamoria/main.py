@@ -9,6 +9,8 @@ from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from Amalgamoria.Controllers.gemini import router as gemini_router
 from Amalgamoria.Controllers.websockets_routes import router as websocket_router
 
+from Amalgamoria.store import store
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = FastAPI()
@@ -45,22 +47,20 @@ usernames = {}
 
 @app.post("/username")
 async def submit_username(username: str = Form(...), user_id: int = Form(...)):
-    obj = { user_id: user_id, username: username }
     # Store the submitted username
+    obj = { user_id: user_id, username: username }
+    store["users"].append(obj)
 
     # TODO: look up common design patterns for building up HTML in server response
-    
     # response = FileResponse("Amalgamoria/Views/Templates/username.html")
     with open("Amalgamoria/Views/Templates/username.html", "r+") as f:
         html = f.read()
-        print(type (html))
-        html = html.replace("dingus", username)
-        print(html)
+        html = html.replace("{{dingus}}", username)
         return HTMLResponse(html)
-    # usernames.user_id = username
-    # return (f"<p>Hello {username}...</p>")
 
-@app.get("/username/get")
+@app.get("/lobby")
 async def index():
-    return HTMLResponse(f"<p>working</p>")
+    with open("Amalgamoria/Views/Templates/lobbies.html") as f:
+        html = f.read()
+        return HTMLResponse(html)
     
