@@ -41,10 +41,6 @@ async def index(request: Request):
          # Read the content of the file and return it as an HTML response
         return HTMLResponse(content=f.read())
 
-# Local data store TODO: replace with Redis
-# usernames = []
-usernames = {}
-
 @app.post("/username")
 async def submit_username(username: str = Form(...), user_id: int = Form(...)):
     # Store the submitted username
@@ -63,4 +59,3 @@ async def index():
     with open("Amalgamoria/Views/Templates/lobbies.html") as f:
         html = f.read()
         return HTMLResponse(html)
-    
