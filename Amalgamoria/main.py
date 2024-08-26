@@ -45,7 +45,7 @@ async def index(request: Request):
 async def submit_username(username: str = Form(...), user_id: int = Form(...)):
     # Store the submitted username
     obj = { user_id: user_id, username: username }
-    store["users"].append(obj)
+    store.users[user_id] = username
 
     # TODO: look up common design patterns for building up HTML in server response
     # response = FileResponse("Amalgamoria/Views/Templates/username.html")
