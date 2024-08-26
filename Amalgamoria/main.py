@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from Amalgamoria.Controllers.gemini import router as gemini_router
 from Amalgamoria.Controllers.websockets_routes import router as websocket_router
 
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = FastAPI()
 
@@ -35,16 +35,32 @@ app.include_router(websocket_router)  # Include the WebSocket router
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     # Serve the index.html file from the static directory
-    with open("Views/index.html") as f:
+    with open("Amalgamoria/Views/index.html") as f:
          # Read the content of the file and return it as an HTML response
         return HTMLResponse(content=f.read())
 
 # Local data store TODO: replace with Redis
-usernames = []
+# usernames = []
+usernames = {}
 
 @app.post("/username")
 async def submit_username(username: str = Form(...), user_id: int = Form(...)):
     obj = { user_id: user_id, username: username }
     # Store the submitted username
-    usernames.append(obj)
-    return (f"<p>Hello {username}...</p>")
+
+    # TODO: look up common design patterns for building up HTML in server response
+    
+    # response = FileResponse("Amalgamoria/Views/Templates/username.html")
+    with open("Amalgamoria/Views/Templates/username.html", "r+") as f:
+        html = f.read()
+        print(type (html))
+        html = html.replace("dingus", username)
+        print(html)
+        return HTMLResponse(html)
+    # usernames.user_id = username
+    # return (f"<p>Hello {username}...</p>")
+
+@app.get("/username/get")
+async def index():
+    return HTMLResponse(f"<p>working</p>")
+    
