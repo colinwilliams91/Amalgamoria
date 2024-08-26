@@ -3,13 +3,15 @@ import os
 import redis
 
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from Amalgamoria.Controllers.gemini import router as gemini_router
 from Amalgamoria.Controllers.websockets_routes import router as websocket_router
 
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Amalgamoria.store import store
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = FastAPI()
 
@@ -35,6 +37,25 @@ app.include_router(websocket_router)  # Include the WebSocket router
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     # Serve the index.html file from the static directory
-    with open("Views/index.html") as f:
+    with open("Amalgamoria/Views/index.html") as f:
          # Read the content of the file and return it as an HTML response
         return HTMLResponse(content=f.read())
+
+@app.post("/username")
+async def submit_username(username: str = Form(...), user_id: int = Form(...)):
+    # Store the submitted username
+    obj = { user_id: user_id, username: username }
+    store.users[user_id] = username
+
+    # TODO: look up common design patterns for building up HTML in server response
+    # response = FileResponse("Amalgamoria/Views/Templates/username.html")
+    with open("Amalgamoria/Views/Templates/username.html", "r+") as f:
+        html = f.read()
+        html = html.replace("{{dingus}}", username)
+        return HTMLResponse(html)
+
+@app.get("/lobby")
+async def index():
+    with open("Amalgamoria/Views/Templates/lobbies.html") as f:
+        html = f.read()
+        return HTMLResponse(html)
